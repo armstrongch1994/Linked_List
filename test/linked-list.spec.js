@@ -63,8 +63,8 @@ describe('A linked list', () => {
     // `isNative` is a helper function used by this spec.
     // There is already an object called `Node` in the browser (unrelated to the "Node"s in our Linked List),
     // so this function makes sure that we're using YOUR Node.
-    function isNative (fn) {
-      return (/\{\s*\[native code]\s*\}/).test('' + fn)
+    function isNative(fn) {
+      return /\{\s*\[native code]\s*\}/.test('' + fn)
     }
     expect(typeof Node).toBe('function')
     expect(isNative(Node)).toBe(false)
@@ -157,7 +157,7 @@ describe('A linked list', () => {
   it('should be able to take strings and functions both as search inputs', () => {
     linkedList.addToTail('one')
     linkedList.addToTail('two')
-    const foundNode = linkedList.search((nodeValue) => {
+    const foundNode = linkedList.search(nodeValue => {
       return nodeValue === 'two'
     })
     expect(foundNode).toBe('two')
@@ -166,7 +166,7 @@ describe('A linked list', () => {
   // This spec demonstrates the utility of the previous spec.
   // If you are passing the last one correctly, this one should already pass!
   it('should therefore be able to store and search for objects, not just strings', () => {
-    function UserNode (name, email, city) {
+    function UserNode(name, email, city) {
       this.name = name
       this.email = email
       this.city = city
@@ -176,17 +176,17 @@ describe('A linked list', () => {
     linkedList.addToHead(new UserNode('David', 'david@fs.com', 'New York'))
     linkedList.addToHead(new UserNode('Paul', 'paul@yc.com', 'Mountain View'))
 
-    const foundNode1 = linkedList.search((userNode) => {
+    const foundNode1 = linkedList.search(userNode => {
       return userNode.name === 'Nimit'
     })
     expect(foundNode1.email).toBe('nimit@fs.com')
 
-    const foundNode2 = linkedList.search((userNode) => {
+    const foundNode2 = linkedList.search(userNode => {
       return userNode.email === 'david@fs.com'
     })
     expect(foundNode2.city).toBe('New York')
 
-    const foundNode3 = linkedList.search((userNode) => {
+    const foundNode3 = linkedList.search(userNode => {
       return userNode.city === 'Mountain View'
     })
     expect(foundNode3.name).toBe('Paul')
